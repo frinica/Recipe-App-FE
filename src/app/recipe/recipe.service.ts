@@ -22,14 +22,14 @@ export class RecipeService {
 
   getAll(): Observable<Recipe[]> {
     return this.httpClient
-      .get<Recipe[]>(this.apiURL + '/recipes/')
+      .get<Recipe[]>(this.apiURL + '/api/recipes/v2')
       .pipe(catchError(this.errorHandler));
   }
 
-  create(recipe: any): Observable<Recipe> {
+  /* create(recipe: any): Observable<Recipe> {
     return this.httpClient
       .post<Recipe>(
-        this.apiURL + '/recipes/',
+        this.apiURL + '/api/recipes/v2',
         JSON.stringify(recipe),
         this.httpOptions
       )
@@ -38,14 +38,14 @@ export class RecipeService {
 
   find(id: string | number): Observable<Recipe[]> {
     return this.httpClient
-      .get<Recipe[]>(this.apiURL + '/recipes/' + id)
+      .get<Recipe[]>(this.apiURL + 'api/recipes/v2/' + id)
       .pipe(catchError(this.errorHandler));
   }
 
   update(id: string | number, recipe: any): Observable<Recipe> {
     return this.httpClient
       .put<Recipe>(
-        this.apiURL + '/recipes/' + id,
+        this.apiURL + 'api/recipes/v2/' + id,
         JSON.stringify(recipe),
         this.httpOptions
       )
@@ -54,9 +54,9 @@ export class RecipeService {
 
   delete(id: string | number) {
     return this.httpClient
-      .delete<Recipe>(this.apiURL + '/recipes/' + id, this.httpOptions)
+      .delete<Recipe>(this.apiURL + 'api/recipes/v2/' + id, this.httpOptions)
       .pipe(catchError(this.errorHandler));
-  }
+  } */
 
   errorHandler(error: {
     error: { message: string };

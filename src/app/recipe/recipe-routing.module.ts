@@ -1,10 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { IndexComponent } from './index/index.component';
+
+const routes: Routes = [
+  { path: 'recipe', redirectTo: 'recipe/index', pathMatch: 'full' },
+  { path: 'recipe/index', component: IndexComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class RecipeRoutingModule { }
+export class RecipeRoutingModule {}

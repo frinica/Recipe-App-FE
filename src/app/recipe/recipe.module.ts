@@ -3,8 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { RecipeRoutingModule } from './recipe-routing.module';
 
+import { IndexComponent } from './index/index.component';
+
 @NgModule({
-  declarations: [],
+  declarations: [IndexComponent],
   imports: [CommonModule, RecipeRoutingModule],
 })
 export class RecipeModule {}
