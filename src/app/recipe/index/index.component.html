@@ -10,6 +10,8 @@
     </tr>
     <tr *ngFor="let recipe of recipes">
       <td>{{ recipe.title }}</td>
+      <td><img [src]="recipe.image" alt="" /></td>
+      <td>{{ recipe.id }}</td>
     </tr>
   </table>
 </div>

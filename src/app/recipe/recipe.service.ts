@@ -10,8 +10,8 @@ import { Recipe } from './recipe';
   providedIn: 'root',
 })
 export class RecipeService {
-  private apiURL = 'https://api.edamam.com';
-
+  private apiURL = 'https://api.spoonacular.com/recipes';
+  private apiKey = '?apiKey=8655ce2ce8ec4641b9f2bae582c91197';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -20,9 +20,9 @@ export class RecipeService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getAll(): Observable<Recipe[]> {
+  getAll(): Observable<any> {
     return this.httpClient
-      .get<Recipe[]>(this.apiURL + '/api/recipes/v2')
+      .get<any>(this.apiURL + 'informationBulk?ids=715538,716429' + this.apiKey)
       .pipe(catchError(this.errorHandler));
   }
 
