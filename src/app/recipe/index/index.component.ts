@@ -14,9 +14,8 @@ export class IndexComponent implements OnInit {
   constructor(public recipeService: RecipeService) {}
 
   ngOnInit(): void {
-    this.recipeService.getAll().subscribe((data: any) => {
-      this.recipes[0] = data.hits[1].recipe;
-      console.log(this.recipes);
+    this.recipeService.getAll().subscribe((recipes: any) => {
+      this.recipes = recipes;
     });
   }
 }

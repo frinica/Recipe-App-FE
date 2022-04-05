@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { Recipe } from './recipe';
 
@@ -20,18 +21,35 @@ export class RecipeService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getAll(): Observable<any> {
+  getAll(): Observable<Recipe[]> {
     return this.httpClient
-      .get<any>(this.apiURL + 'informationBulk?ids=715538,716429' + this.apiKey)
+      .get(this.apiURL + '/' + this.apiKey)
+      .pipe(
+        map((response: any) => {
+          const recipes = response.json();
+          return recipes.map((recipe: any) => new Recipe(recipe));
+        })
+      )
       .pipe(catchError(this.errorHandler));
   }
 
-  /* create(recipe: any): Observable<Recipe> {
+  getByID(id: number): Observable<Recipe> {
     return this.httpClient
-      .post<Recipe>(
-        this.apiURL + '/api/recipes/v2',
-        JSON.stringify(recipe),
-        this.httpOptions
+      .get(this.apiURL + '/recipes' + id + this.apiKey)
+      .pipe(
+        map((response) => {
+          return new Recipe(response.json());
+        })
+      )
+      .pipe(catchError(this.errorHandler));
+  }
+  create(recipe: Recipe): Observable<Recipe> {
+    return this.httpClient
+      .post(this.apiURL + '/recipe', recipe + this.apiKey)
+      .pipe(
+        map((response) => {
+          return new Recipe(response.json());
+        })
       )
       .pipe(catchError(this.errorHandler));
   }
@@ -42,21 +60,23 @@ export class RecipeService {
       .pipe(catchError(this.errorHandler));
   }
 
-  update(id: string | number, recipe: any): Observable<Recipe> {
+  update(recipe: Recipe): Observable<Recipe> {
     return this.httpClient
-      .put<Recipe>(
-        this.apiURL + 'api/recipes/v2/' + id,
-        JSON.stringify(recipe),
-        this.httpOptions
+      .put(this.apiURL + '/recipe/' + recipe.id, recipe + this.apiKey)
+      .pipe(
+        map((response) => {
+          return new Recipe(response.json());
+        })
       )
       .pipe(catchError(this.errorHandler));
   }
 
-  delete(id: string | number) {
+  delete(id: number) {
     return this.httpClient
-      .delete<Recipe>(this.apiURL + 'api/recipes/v2/' + id, this.httpOptions)
+      .delete(this.apiURL + '/recipes/' + id)
+      .pipe(map((response) => null))
       .pipe(catchError(this.errorHandler));
-  } */
+  }
 
   errorHandler(error: {
     error: { message: string };
