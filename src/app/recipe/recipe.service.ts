@@ -24,15 +24,6 @@ export class RecipeService {
   constructor(private httpClient: HttpClient) {}
 
   getAll(queryString: string): Observable<any> {
-    /* return this.httpClient
-      .get(this.apiURL)
-      .pipe(
-        map((response: any) => {
-          const recipes = response.json();
-          return recipes.map((recipe: any) => new Recipe(recipe));
-        })
-      )
-      .pipe(catchError(this.errorHandler)); */
     return this.httpClient
       .get<any>(
         this.apiURL +
@@ -75,24 +66,7 @@ export class RecipeService {
       .get<Recipe[]>(this.apiURL + 'api/recipes/v2/' + id)
       .pipe(catchError(this.errorHandler));
   }
-
-  update(recipe: Recipe): Observable<Recipe> {
-    return this.httpClient
-      .put(this.apiURL + '/recipe/' + recipe.id, recipe + this.apiKey)
-      .pipe(
-        map((response) => {
-          return new Recipe(response.json());
-        })
-      )
-      .pipe(catchError(this.errorHandler));
-  }
-
-  delete(id: number) {
-    return this.httpClient
-      .delete(this.apiURL + '/recipes/' + id)
-      .pipe(map((response) => null))
-      .pipe(catchError(this.errorHandler));
-  } */
+*/
 
   errorHandler(error: {
     error: { message: string };
