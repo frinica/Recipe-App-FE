@@ -5,13 +5,12 @@
     <tr>
       <th>ID</th>
       <th>Title</th>
-      <th>Body</th>
-      <th width="220px">Action</th>
+      <th>Image</th>
     </tr>
     <tr *ngFor="let recipe of recipes">
-      <td>{{ recipe.title }}</td>
-      <td><img [src]="recipe.image" alt="" /></td>
       <td>{{ recipe.id }}</td>
+      <td><img [src]="recipe.title" alt="" /></td>
+      <td>{{ recipe.image }}</td>
     </tr>
   </table>
 </div>

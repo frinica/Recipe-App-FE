@@ -5,7 +5,8 @@ import { IndexComponent } from './index/index.component';
 
 const routes: Routes = [
   { path: 'recipe', redirectTo: 'recipe/index', pathMatch: 'full' },
-  { path: 'recipe/index', component: IndexComponent },
+  { path: 'recipe/index/:query', component: IndexComponent },
+  //{ path: 'recipe/index/:query', component: IndexComponent },
 ];
 
 @NgModule({

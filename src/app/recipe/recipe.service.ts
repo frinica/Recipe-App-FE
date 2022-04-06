@@ -11,29 +11,45 @@ import { Recipe } from './recipe';
   providedIn: 'root',
 })
 export class RecipeService {
-  private apiURL = 'https://api.spoonacular.com/recipes';
-  private apiKey = '?apiKey=8655ce2ce8ec4641b9f2bae582c91197';
+  private apiURL = 'https://api.spoonacular.com/';
+  private apiKey = 'apiKey=8655ce2ce8ec4641b9f2bae582c91197';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
     }),
   };
 
+  // https://api.spoonacular.com/recipes/complexSearch?query=burgers&apiKey=8655ce2ce8ec4641b9f2bae582c91197
+
   constructor(private httpClient: HttpClient) {}
 
-  getAll(): Observable<Recipe[]> {
-    return this.httpClient
-      .get(this.apiURL + '/' + this.apiKey)
+  getAll(queryString: string): Observable<any> {
+    /* return this.httpClient
+      .get(this.apiURL)
       .pipe(
         map((response: any) => {
           const recipes = response.json();
           return recipes.map((recipe: any) => new Recipe(recipe));
         })
       )
+      .pipe(catchError(this.errorHandler)); */
+    return this.httpClient
+      .get<any>(
+        this.apiURL +
+          'recipes/complexSearch?query= ' +
+          queryString +
+          //'&intolerances=' +
+          //this.intolerances +
+          //'&cuisine=' +
+          //this.cuisine +
+          '&' +
+          this.apiKey
+        // https://spoonacular.com/food-api/docs
+      )
       .pipe(catchError(this.errorHandler));
   }
 
-  getByID(id: number): Observable<Recipe> {
+  /*getByID(id: number): Observable<Recipe> {
     return this.httpClient
       .get(this.apiURL + '/recipes' + id + this.apiKey)
       .pipe(
@@ -76,7 +92,7 @@ export class RecipeService {
       .delete(this.apiURL + '/recipes/' + id)
       .pipe(map((response) => null))
       .pipe(catchError(this.errorHandler));
-  }
+  } */
 
   errorHandler(error: {
     error: { message: string };
