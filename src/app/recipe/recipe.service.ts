@@ -40,11 +40,9 @@ export class RecipeService {
       .pipe(catchError(this.errorHandler));
   }
 
-  getByID(id: number): Observable<Recipe> {
+  getByID(id: number): Observable<any> {
     return this.httpClient
-      .get<Recipe>(
-        this.apiURL + 'recipes/' + id + '/information' + '?' + this.apiKey
-      )
+      .get<any>(this.apiURL + 'recipes/' + id + '/information?' + this.apiKey)
       .pipe(catchError(this.errorHandler));
   }
   /*

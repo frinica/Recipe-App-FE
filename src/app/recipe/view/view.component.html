@@ -6,9 +6,13 @@
     </tr>
     <tr *ngFor="let recipe of recipes">
       <td>
-        <a href="/recipe/''recipe.id'"><img [src]="recipe.image" alt="" /></a>
+        <a [routerLink]="['/recipe-details', recipe.id]"
+          ><img [src]="recipe.image" alt=""
+        /></a>
       </td>
-      <td>{{ recipe.title }}</td>
+      <td>
+        <a [routerLink]="['/recipe-details', recipe.id]">{{ recipe.title }}</a>
+      </td>
     </tr>
   </table>
 </div>
