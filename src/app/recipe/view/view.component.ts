@@ -5,11 +5,11 @@ import { Recipe } from '../recipe';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-index',
-  templateUrl: './index.component.html',
-  styleUrls: ['./index.component.css'],
+  selector: 'app-view',
+  templateUrl: './view.component.html',
+  styleUrls: ['./view.component.css'],
 })
-export class IndexComponent implements OnInit {
+export class ViewComponent implements OnInit {
   recipes: Recipe[] = [];
 
   constructor(

@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RecipeService } from '../recipe.service';
 
@@ -21,6 +26,6 @@ export class SearchComponent implements OnInit {
     console.log(value);
     this.query = value;
 
-    this.router.navigate(['recipe/index/' + this.query]);
+    this.router.navigate(['recipe/' + this.query]);
   }
 }

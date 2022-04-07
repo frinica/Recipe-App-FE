@@ -7,9 +7,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { RecipeModule } from './recipe/recipe.module';
+import { SinglePageComponent } from './recipe/single-page/single-page.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SinglePageComponent],
   imports: [
     BrowserModule,
     FormsModule,
