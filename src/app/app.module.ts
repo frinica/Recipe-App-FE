@@ -7,15 +7,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { RecipeModule } from './recipe/recipe.module';
-import { SinglePageComponent } from './recipe/single-page/single-page.component';
+import { PublicModule } from './public/public.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [AppComponent, SinglePageComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     RecipeModule,
+    PublicModule,
+    RouterModule,
     HttpClientModule,
   ],
   providers: [],

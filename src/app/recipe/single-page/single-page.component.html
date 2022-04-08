@@ -1,1 +1,9 @@
-<p>single-page works!</p>
+<h1>{{ recipe.title }}</h1>
+<img [src]="recipe.image" alt="" />
+<button>Add to list</button>
+<h2>Ingredients</h2>
+<ul>
+  <ng-container *ngFor="let ingred of recipe.extendedIngredients">
+    <li>{{ ingred.name }}</li>
+  </ng-container>
+</ul>

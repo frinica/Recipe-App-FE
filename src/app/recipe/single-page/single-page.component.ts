@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Recipe } from '../recipe';
+import { Ingredients, Measures, Metric, Recipe } from '../recipe';
 import { RecipeService } from '../recipe.service';
 
 @Component({
@@ -11,6 +11,9 @@ import { RecipeService } from '../recipe.service';
 export class SinglePageComponent implements OnInit {
   id!: number;
   recipe!: Recipe;
+  ingredients!: Ingredients;
+  measures!: Measures;
+  metric!: Metric;
 
   constructor(
     public recipeService: RecipeService,
@@ -20,8 +23,9 @@ export class SinglePageComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.actRoute.snapshot.params['id'];
 
-    this.recipeService.getByID(this.id).subscribe((data: Recipe[]) => {
-      this.recipe = data[0];
+    this.recipeService.getByID(this.id).subscribe((data: Recipe) => {
+      this.recipe = data;
+      console.log(data);
     });
   }
 }
