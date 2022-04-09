@@ -4,6 +4,8 @@
 <h2>Ingredients</h2>
 <ul>
   <ng-container *ngFor="let ingred of recipe.extendedIngredients">
-    <li>{{ ingred.name }}</li>
+    <li>{{ ingred.original }}</li>
   </ng-container>
 </ul>
+<h2>Instructions</h2>
+<div [innerHtml]="recipe.instructions"></div>

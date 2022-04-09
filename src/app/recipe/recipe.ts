@@ -2,24 +2,22 @@ export interface Recipe {
   id: number;
   title: string;
   image: string;
-  sourceUrl: string;
   extendedIngredients: Ingredients[];
+  instructions: string;
 }
 
 export interface Ingredients {
-  name: string;
-  measures: Measures[];
-  image: string;
+  original: string | number;
 }
 
-export interface Measures {
+/* export interface Measures {
   metric: Metric[];
 }
 
 export interface Metric {
   amount: number;
   unitShort: string;
-}
+} */
 /* export interface RecipeConstructor {
   new (
     id: number,

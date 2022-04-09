@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Ingredients, Measures, Metric, Recipe } from '../recipe';
+import { Recipe } from '../recipe';
 import { RecipeService } from '../recipe.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { RecipeService } from '../recipe.service';
 export class SinglePageComponent implements OnInit {
   id!: number;
   recipe!: Recipe;
-  /* ingredients!: Ingredients;
+  /*ingredients!: Ingredients;
   measures!: Measures;
   metric!: Metric; */
 
