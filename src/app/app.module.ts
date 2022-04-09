@@ -9,9 +9,10 @@ import { AppComponent } from './app.component';
 import { RecipeModule } from './recipe/recipe.module';
 import { PublicModule } from './public/public.module';
 import { RouterModule } from '@angular/router';
+import { SecureComponent } from './secure/secure.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SecureComponent],
   imports: [
     BrowserModule,
     FormsModule,

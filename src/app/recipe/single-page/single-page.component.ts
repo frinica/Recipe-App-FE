@@ -11,9 +11,9 @@ import { RecipeService } from '../recipe.service';
 export class SinglePageComponent implements OnInit {
   id!: number;
   recipe!: Recipe;
-  ingredients!: Ingredients;
+  /* ingredients!: Ingredients;
   measures!: Measures;
-  metric!: Metric;
+  metric!: Metric; */
 
   constructor(
     public recipeService: RecipeService,

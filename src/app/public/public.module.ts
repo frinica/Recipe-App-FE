@@ -6,9 +6,10 @@ import { RouterModule } from '@angular/router';
 import { PublicComponent } from './public.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
-  declarations: [LoginComponent, PublicComponent],
+  declarations: [LoginComponent, PublicComponent, RegisterComponent],
   imports: [
     CommonModule,
     RouterModule,
