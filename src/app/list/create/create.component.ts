@@ -26,10 +26,14 @@ export class CreateComponent implements OnInit {
     this.http
       .get('http://localhost:8000/api/user/', { headers: headers })
       .subscribe((result: any) => (this.user = result));
-    console.log(this.user);
+    (err: any) => {
+      localStorage.removeItem('token');
+      this.router.navigate(['/login']);
+    };
 
     this.form = new FormGroup({
       list_name: new FormControl('', [Validators.required]),
+      user_id: new FormControl(''),
     });
   }
 
@@ -41,7 +45,7 @@ export class CreateComponent implements OnInit {
     console.log(this.form.value);
     this.listService.store(this.form.value).subscribe((res: any) => {
       console.log('List created successfully!');
-      this.router.navigateByUrl('create');
+      this.router.navigateByUrl('lists/create');
     });
   }
 }

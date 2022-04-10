@@ -2,6 +2,12 @@
 
 <form [formGroup]="form" (ngSubmit)="submit()">
   <div class="form-group">
+    <input
+      *ngIf="user"
+      type="hidden"
+      formControlName="user_id"
+      [ngModel]="user.id"
+    />
     <label for="list_name">List name:</label>
     <input type="text" formControlName="list_name" class="form-control" />
     <div
@@ -10,5 +16,8 @@
     >
       Name is required.
     </div>
+    <button class="btn btn-lg btn-primary btn-block" [disabled]="!form.valid">
+      Create
+    </button>
   </div>
 </form>

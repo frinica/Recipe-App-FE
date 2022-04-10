@@ -13,16 +13,17 @@ export class ListService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
     }),
   };
 
   constructor(private httpClient: HttpClient) {}
 
-  store(custom_list: any): Observable<List> {
+  store(list: any): Observable<List> {
     return this.httpClient
       .post<List>(
-        this.apiURL + '/store-list/',
-        JSON.stringify(custom_list),
+        this.apiURL + '/store-list',
+        JSON.stringify(list),
         this.httpOptions
       )
       .pipe(catchError(this.errorHandler));
