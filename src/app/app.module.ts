@@ -10,6 +10,8 @@ import { RecipeModule } from './recipe/recipe.module';
 import { PublicModule } from './public/public.module';
 import { RouterModule } from '@angular/router';
 import { SecureComponent } from './secure/secure.component';
+import { ListComponent } from './list/list.component';
+import { ListModule } from './list/list.module';
 
 @NgModule({
   declarations: [AppComponent, SecureComponent],
@@ -19,6 +21,7 @@ import { SecureComponent } from './secure/secure.component';
     AppRoutingModule,
     RecipeModule,
     PublicModule,
+    ListModule,
     RouterModule,
     HttpClientModule,
   ],
