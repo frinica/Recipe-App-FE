@@ -35,8 +35,6 @@ export class CreateComponent implements OnInit {
     this.form = new FormGroup({
       list_name: new FormControl('', [Validators.required]),
     });
-
-    console.log(this.user);
   }
 
   get f() {

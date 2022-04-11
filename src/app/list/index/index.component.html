@@ -1,0 +1,35 @@
+<h1>My lists</h1>
+
+<a href="#" routerLink="/lists/create/" class="btn btn-success"
+  >Create New List</a
+>
+<table class="table table-bordered">
+  <tr>
+    <th>Name</th>
+    <th width="220px">Action</th>
+  </tr>
+  <tr *ngFor="let list of lists">
+    <td>{{ list.list_name }}</td>
+    <!-- <td>
+        <a
+          href="#"
+          [routerLink]="['/list/', list.id, 'view']"
+          class="btn btn-info"
+          >View</a
+        >
+        <a
+          href="#"
+          [routerLink]="['/list/', list.id, 'edit']"
+          class="btn btn-info"
+          >Edit</a
+        >
+        <button
+          type="button"
+          (click)="deletelist(list.id)"
+          class="btn btn-info"
+        >
+          Delete
+        </button>
+      </td> -->
+  </tr>
+</table>

@@ -19,6 +19,12 @@ export class ListService {
 
   constructor(private httpClient: HttpClient) {}
 
+  viewAll(): Observable<List[]> {
+    return this.httpClient
+      .get<List[]>(this.apiURL + '/lists-view', this.httpOptions)
+      .pipe(catchError(this.errorHandler));
+  }
+
   store(list: any, userid: any): Observable<List> {
     let list_name = list.list_name;
     let user_id = userid;
