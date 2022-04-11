@@ -10,7 +10,6 @@ import { RecipeModule } from './recipe/recipe.module';
 import { PublicModule } from './public/public.module';
 import { RouterModule } from '@angular/router';
 import { SecureComponent } from './secure/secure.component';
-import { ListComponent } from './list/list.component';
 import { ListModule } from './list/list.module';
 
 @NgModule({

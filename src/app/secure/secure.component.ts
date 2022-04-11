@@ -14,10 +14,11 @@ export class SecureComponent implements OnInit {
 
   ngOnInit(): void {
     const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     });
     this.http
-      .get('http://localhost:8000/api/user/', { headers: headers })
+      .get('http://localhost:8000/api/user', { headers: headers })
       .subscribe((result: any) => (this.user = result));
     (err: any) => {
       localStorage.removeItem('token');

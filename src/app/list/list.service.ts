@@ -19,11 +19,13 @@ export class ListService {
 
   constructor(private httpClient: HttpClient) {}
 
-  store(list: any): Observable<List> {
+  store(list: any, userid: any): Observable<List> {
+    let list_name = list.list_name;
+    let user_id = userid;
     return this.httpClient
       .post<List>(
         this.apiURL + '/store-list',
-        JSON.stringify(list),
+        JSON.stringify({ list_name, user_id }),
         this.httpOptions
       )
       .pipe(catchError(this.errorHandler));
