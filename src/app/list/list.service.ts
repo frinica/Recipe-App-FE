@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Recipe } from '../recipe/recipe';
 import { List } from './list';
 
 @Injectable({
@@ -40,6 +41,18 @@ export class ListService {
   getByID(id: number | string): Observable<any> {
     return this.httpClient
       .get<any>(this.apiURL + '/list-view/' + id, this.httpOptions)
+      .pipe(catchError(this.errorHandler));
+  }
+
+  update(list: any, recipeid: any): Observable<List> {
+    let customlist_id = list.customlist_id;
+    let recipe_id = recipeid;
+    return this.httpClient
+      .put<List>(
+        this.apiURL + '/update-list/' + customlist_id,
+        JSON.stringify({ customlist_id, recipe_id }),
+        this.httpOptions
+      )
       .pipe(catchError(this.errorHandler));
   }
 

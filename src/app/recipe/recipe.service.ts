@@ -47,6 +47,13 @@ export class RecipeService {
       )
       .pipe(catchError(this.errorHandler));
   }
+
+  getBulk(queryString: number | string): Observable<any> {
+    return this.httpClient.get<any>(
+      this.apiURL + '/informationBulk?ids=' + queryString + '&' + this.apiKey
+    );
+  }
+
   /*
   create(recipe: Recipe): Observable<Recipe> {
     return this.httpClient

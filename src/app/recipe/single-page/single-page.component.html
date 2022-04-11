@@ -1,11 +1,24 @@
-<h1 *ngIf="recipe">{{ recipe.title }}</h1>
-<img [src]="recipe.image" alt="" />
-<button>Add to list</button>
-<h2>Ingredients</h2>
-<ul>
-  <ng-container *ngFor="let ingred of recipe.extendedIngredients">
-    <li>{{ ingred.original }}</li>
-  </ng-container>
-</ul>
-<h2>Instructions</h2>
-<div [innerHtml]="recipe.instructions"></div>
+<div class="container">
+  <h1 *ngIf="recipe">{{ recipe.title }}</h1>
+  <img *ngIf="recipe" [src]="recipe.image" alt="" />
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <button class="btn btn-lg btn-primary btn-block" [disabled]="!form.valid">
+      Add to list
+    </button>
+    <select formControlName="customlist_id">
+      <option *ngFor="let list of lists" [value]="list.id">
+        {{ list.list_name }}
+      </option>
+    </select>
+  </form>
+
+  <h2>Ingredients</h2>
+  <ul>
+    <ng-container *ngFor="let ingred of recipe.extendedIngredients">
+      <li>{{ ingred.original }}</li>
+    </ng-container>
+  </ul>
+  <h2>Instructions</h2>
+  <div *ngIf="recipe" [innerHtml]="recipe.instructions"></div>
+</div>
