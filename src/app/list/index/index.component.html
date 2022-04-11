@@ -7,7 +7,9 @@
     <th width="220px">Action</th>
   </tr>
   <tr *ngFor="let list of lists">
-    <td>{{ list.list_name }}</td>
+    <td>
+      <a [routerLink]="['/lists/', list.id]">{{ list.list_name }}</a>
+    </td>
     <!-- <td>
         <a
           href="#"

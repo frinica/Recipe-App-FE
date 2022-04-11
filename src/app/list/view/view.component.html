@@ -1,0 +1,35 @@
+<div class="container">
+  <a routerLink="/lists" class="btn btn-primary">Back</a>
+  <h1 *ngFor="let details of list">{{ details.list_name }}</h1>
+
+  <table class="table table-bordered">
+    <tr>
+      <th>Recipe</th>
+      <th width="220px">Action</th>
+    </tr>
+    <tr *ngFor="let recipe of recipes">
+      <td>{{ recipe.recipe_id }}</td>
+      <!--       <td>
+        <a
+          href="#"
+          [routerLink]="['/post/', post.id, 'view']"
+          class="btn btn-info"
+          >View</a
+        >
+        <a
+          href="#"
+          [routerLink]="['/post/', post.id, 'edit']"
+          class="btn btn-primary"
+          >Edit</a
+        >
+        <button
+          type="button"
+          (click)="deletePost(post.id)"
+          class="btn btn-danger"
+        >
+          Delete
+        </button>
+      </td> -->
+    </tr>
+  </table>
+</div>

@@ -37,6 +37,12 @@ export class ListService {
       .pipe(catchError(this.errorHandler));
   }
 
+  getByID(id: number | string): Observable<any> {
+    return this.httpClient
+      .get<any>(this.apiURL + '/list-view/' + id, this.httpOptions)
+      .pipe(catchError(this.errorHandler));
+  }
+
   errorHandler(error: {
     error: { message: string };
     status: any;

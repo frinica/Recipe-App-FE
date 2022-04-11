@@ -5,10 +5,10 @@ import { ListRoutingModule } from './list-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListComponent } from './list.component';
 import { IndexComponent } from './index/index.component';
-import { EditComponent } from './edit/edit.component';
+import { ViewComponent } from './view/view.component';
 
 @NgModule({
-  declarations: [CreateComponent, ListComponent, IndexComponent, EditComponent],
+  declarations: [CreateComponent, ListComponent, IndexComponent, ViewComponent],
   imports: [CommonModule, ListRoutingModule, FormsModule, ReactiveFormsModule],
 })
 export class ListModule {}
