@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>Update list</h1>
+
+  <a routerLink="/post/index" class="btn btn-primary">Back</a>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-group">
+      <label for="list_name">Name:</label>
+      <input
+        formControlName="list_name"
+        type="text"
+        [(ngModel)]="list.list_name"
+        class="form-control"
+      />
+      <div
+        *ngIf="f['list_name'].touched && f['list_name'].invalid"
+        class="alert alert-danger"
+      >
+        <div *ngIf="f['list_name'].errors && f['list_name'].errors['required']">
+          Name is required.
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit" [disabled]="!form.valid">
+      Update
+    </button>
+  </form>
+</div>
