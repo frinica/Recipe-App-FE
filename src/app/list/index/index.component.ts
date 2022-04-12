@@ -22,7 +22,7 @@ export class IndexComponent implements OnInit {
   delete(id: number) {
     this.listService.destroy(id).subscribe((res) => {
       this.lists = this.lists.filter((item) => item.id !== id);
-      console.log('List was deleted!');
+      console.log('List deleted!');
     });
     this.ngOnInit();
   }

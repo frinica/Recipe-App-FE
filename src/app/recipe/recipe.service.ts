@@ -27,11 +27,9 @@ export class RecipeService {
         this.apiURL +
           'recipes/complexSearch?query= ' +
           queryString +
-          //'&intolerances=' +
-          //this.intolerances +
           //'&cuisine=' +
           //this.cuisine +
-          '&' +
+          '&number=20&' +
           this.apiKey
       )
       .pipe(catchError(this.errorHandler));
@@ -55,24 +53,11 @@ export class RecipeService {
     );
   }
 
-  /*
-  create(recipe: Recipe): Observable<Recipe> {
+  getRandom(): Observable<any> {
     return this.httpClient
-      .post(this.apiURL + '/recipe', recipe + this.apiKey)
-      .pipe(
-        map((response) => {
-          return new Recipe(response.json());
-        })
-      )
+      .get<any>(this.apiURL + 'recipes/random?number=6&' + this.apiKey)
       .pipe(catchError(this.errorHandler));
   }
-
-  find(id: string | number): Observable<Recipe[]> {
-    return this.httpClient
-      .get<Recipe[]>(this.apiURL + 'api/recipes/v2/' + id)
-      .pipe(catchError(this.errorHandler));
-  }
-*/
 
   errorHandler(error: {
     error: { message: string };

@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Directive, OnInit } from '@angular/core';
 import {
+  FormBuilder,
   FormControl,
   FormGroup,
   FormsModule,
   Validators,
+  FormArray,
 } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { RecipeService } from '../recipe.service';
 
 @Component({
@@ -17,10 +19,37 @@ export class SearchComponent implements OnInit {
   form!: FormGroup;
   value!: String;
   query = '';
+  /*mealTypes: Array<any> = ['Main course', 'Breakfast', 'Appetizer', 'Dessert'];
+  cuisines: Array<any> = [
+    'Chinese',
+    'French',
+    'Indian',
+    'Italian',
+    'Japanese',
+    'Mexican',
+    'Nordic',
+  ];
 
-  constructor(public recipeService: RecipeService, private router: Router) {}
+  Diet: Array<any> = [
+    { name: 'Gluten free', value: 'gluten free' },
+    { name: 'Vegetarian', value: 'vegetarian' },
+    { name: 'Vegan', value: 'vegan' },
+    { name: 'Pescetarian', value: 'pescetarian' },
+  ];
+   */
 
-  ngOnInit(): void {}
+  constructor(
+    public recipeService: RecipeService,
+    private router: Router,
+    private fb: FormBuilder
+  ) {}
+
+  ngOnInit(): void {
+    this.form = new FormGroup({
+      searchTerm: new FormControl(''),
+      cuisines: new FormControl(''),
+    });
+  }
 
   submit(value: string) {
     console.log(value);

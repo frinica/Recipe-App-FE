@@ -1,43 +1,10 @@
-<form>
-  <input type="text" #box placeholder="Search.." />
-  <button (click)="submit(box.value)">Search</button>
-  <!--  <br />
-  <label>Cuisine</label>
-  <br />
-  <input type="checkbox" name="cuisine" value="Chinese" />
-  <label for="cuisine"> Chinese</label>
-  <input type="checkbox" name="cuisine" value="French" />
-  <label for="cuisine"> French</label>
-  <input type="checkbox" name="cuisine" value="Indian" />
-  <label for="cuisine"> Indian</label>
-  <input type="checkbox" name="cuisine" value="Italian" />
-  <label for="cuisine"> Italian</label>
-  <input type="checkbox" name="cuisine" value="Japanese" />
-  <label for="cuisine"> Japanese</label>
-  <input type="checkbox" name="cuisine" value="Mexican" />
-  <label for="cuisine"> Mexican</label>
-  <input type="checkbox" name="cuisine" value="Nordic" />
-  <label for="cuisine"> Nordic</label>
-  <br />
-  <label>Diet</label>
-  <br />
-  <input type="checkbox" name="diet" value="Gluten Free" />
-  <label for="diet"> Gluten Free</label>
-  <input type="checkbox" name="diet" value="Vegetarian" />
-  <label for="diet"> Vegetarian</label>
-  <input type="checkbox" name="diet" value="Vegan" />
-  <label for="diet"> Vegan</label>
-  <input type="checkbox" name="diet" value="Pescetarian" />
-  <label for="diet"> Pescetarian</label>
-  <br />
-  <label>Meal type</label>
-  <br />
-  <input type="checkbox" name="type" value="main course" />
-  <label for="type"> Main course</label>
-  <input type="checkbox" name="type" value="breakfast" />
-  <label for="type"> Breakfast</label>
-  <input type="checkbox" name="type" value="appetizer" />
-  <label for="type"> Appetizer</label>
-  <input type="checkbox" name="type" value="dessert" />
-  <label for="type"> Dessert</label> -->
+<form class="row g-3">
+  <div class="col-auto">
+    <input type="text" class="form-control" #box placeholder="Search.." />
+  </div>
+  <div class="col-auto">
+    <button class="btn btn-primary mb-3" (click)="submit(box.value)">
+      Search
+    </button>
+  </div>
 </form>
