@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
 
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -12,9 +11,8 @@ import { Recipe } from './recipe';
   providedIn: 'root',
 })
 export class RecipeService {
-  apiKey = environment.apiKey;
   private apiURL = 'https://api.spoonacular.com/';
-  /* private apiKey = 'apiKey=8655ce2ce8ec4641b9f2bae582c91197'; */
+  private apiKey = 'apiKey=be7d5d9944af4f6588820dc98572a1da';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
