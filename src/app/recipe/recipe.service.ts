@@ -19,8 +19,6 @@ export class RecipeService {
     }),
   };
 
-  // https://api.spoonacular.com/recipes/complexSearch?query=burgers&apiKey=8655ce2ce8ec4641b9f2bae582c91197
-
   constructor(private httpClient: HttpClient) {}
 
   getAll(queryString: string): Observable<any> {
@@ -35,7 +33,6 @@ export class RecipeService {
           //this.cuisine +
           '&' +
           this.apiKey
-        // https://spoonacular.com/food-api/docs
       )
       .pipe(catchError(this.errorHandler));
   }

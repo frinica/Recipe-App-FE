@@ -1,6 +1,5 @@
-import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Recipe } from 'src/app/recipe/recipe';
 import { RecipeService } from 'src/app/recipe/recipe.service';
 import { List, ListEntry } from '../list';
@@ -15,6 +14,7 @@ export class ViewComponent implements OnInit {
   id!: number;
   lists: List[] = [];
   entries: ListEntry[] = [];
+  entry!: any;
   recipes: Recipe[] = [];
   rID!: any;
 
@@ -30,13 +30,9 @@ export class ViewComponent implements OnInit {
     this.listService.getByID(this.id).subscribe((data: any) => {
       this.lists = data[0];
       this.entries = data[1];
-      console.log(data);
-
-      console.log(this.lists);
-      console.log(this.entries);
 
       this.rID = this.entries.map((t) => t.recipe_id);
-      console.log(this.rID);
+      this.entry = this.entries.map((t) => t.id);
 
       this.recipeService.getBulk(this.rID).subscribe(
         (data: any) => {
@@ -47,5 +43,13 @@ export class ViewComponent implements OnInit {
         }
       );
     });
+  }
+
+  deleteRecipe(id: number) {
+    this.listService.delete(id).subscribe((res) => {
+      this.entry = this.entry.filter((item: any) => item.id !== id);
+      console.log('Recipe was removed!');
+    });
+    this.ngOnInit();
   }
 }

@@ -5,40 +5,37 @@
   <table class="table">
     <tr>
       <th>Recipe</th>
-      <th width="220px">Action</th>
       <th></th>
+      <th width="220px">Action</th>
     </tr>
 
-    <tr *ngFor="let recipe of recipes">
-      <td>
-        <a [routerLink]="['/recipe-details', recipe.id]"
-          ><img class="img-thumbnail" [src]="recipe.image" alt=""
-        /></a>
-      </td>
-      <td>
-        <a [routerLink]="['/recipe-details', recipe.id]">{{ recipe.title }}</a>
-      </td>
-      <!--       <td>
-        <a
-          href="#"
-          [routerLink]="['/post/', post.id, 'view']"
-          class="btn btn-info"
-          >View</a
-        >
-        <a
-          href="#"
-          [routerLink]="['/post/', post.id, 'edit']"
-          class="btn btn-primary"
-          >Edit</a
-        >
-        <button
-          type="button"
-          (click)="deletePost(post.id)"
-          class="btn btn-danger"
-        >
-          Delete
-        </button>
-      </td> -->
-    </tr>
+    <tbody *ngIf="recipes.length">
+      <ng-container *ngFor="let recipe of recipes; let i = index">
+        <tr>
+          <td>
+            <a [routerLink]="['/recipe-details', recipe.id]"
+              ><img class="img-thumbnail" [src]="recipe.image" alt=""
+            /></a>
+          </td>
+
+          <td>
+            <a [routerLink]="['/recipe-details', recipe.id]">{{
+              recipe.title
+            }}</a>
+          </td>
+          <div *ngIf="entry">
+            <td>
+              <button
+                type="button"
+                (click)="deleteRecipe(entry[i])"
+                class="btn btn-danger"
+              >
+                Delete
+              </button>
+            </td>
+          </div>
+        </tr>
+      </ng-container>
+    </tbody>
   </table>
 </div>

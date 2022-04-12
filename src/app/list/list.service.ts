@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Recipe } from '../recipe/recipe';
-import { List } from './list';
+import { List, ListEntry } from './list';
 
 @Injectable({
   providedIn: 'root',
@@ -53,6 +53,12 @@ export class ListService {
         JSON.stringify({ customlist_id, recipe_id }),
         this.httpOptions
       )
+      .pipe(catchError(this.errorHandler));
+  }
+
+  delete(id: number) {
+    return this.httpClient
+      .delete<List>(this.apiURL + '/delete-recipe/' + id, this.httpOptions)
       .pipe(catchError(this.errorHandler));
   }
 
