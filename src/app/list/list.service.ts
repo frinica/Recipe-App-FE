@@ -13,7 +13,6 @@ export class ListService {
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Access-Control-Allow-Origin': 'http://localhost:4200',
       'Content-Type': 'application/json',
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     }),
