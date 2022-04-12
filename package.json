@@ -4,9 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
-    "build": "ng build --prod",
+    "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "heroku-postbuild": "npm run build"
   },
   "private": true,
   "dependencies": {
@@ -42,7 +43,7 @@
     "typescript": "~4.5.2"
   },
   "engines": {
-    "node": "v16.13.2",
+    "node": "16.13.2",
     "npm": "8.1.2"
   }
 }
