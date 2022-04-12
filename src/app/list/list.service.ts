@@ -9,10 +9,11 @@ import { List, ListEntry } from './list';
   providedIn: 'root',
 })
 export class ListService {
-  private apiURL = 'http://localhost:8000/api';
+  private apiURL = 'https://frinicas-recipe-app-be.herokuapp.com';
 
   httpOptions = {
     headers: new HttpHeaders({
+      'Access-Control-Allow-Origin': 'http://localhost:4200',
       'Content-Type': 'application/json',
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     }),
