@@ -9,8 +9,14 @@ const express = require("express");
 const app = express();
 app.use(requireHTTPS);
 
-app.use(express.static("./dist/<name-on-package.json>"));
+app.use(express.static("./dist/recipe-app"));
 
 app.get("/*", function (req, res) {
-  res.sendFile("index.html", { root: "dist/<name-on-package.json>/" });
+  res.sendFile("index.html", { root: "dist/recipe-app/" });
 });
+
+app.route("/*", function (req, res) {
+  res.redirect(__dirname + "/dist/index.html");
+});
+
+app.listen(process.env.PORT || 8080);
