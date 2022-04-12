@@ -29,9 +29,11 @@ export class RegisterComponent implements OnInit {
   submit() {
     const formData = this.form.getRawValue();
 
-    this.http.post('http://localhost:8000/api/register', formData).subscribe(
-      (result: any) => this.router.navigate(['/home']),
-      (err) => console.log(err)
-    );
+    this.http
+      .post('https://frinicas-recipe-app-be.herokuapp.com/register', formData)
+      .subscribe(
+        (result: any) => this.router.navigate(['/home']),
+        (err) => console.log(err)
+      );
   }
 }

@@ -31,15 +31,17 @@ export class LoginComponent implements OnInit {
       password: formData.password,
     };
 
-    this.http.post('http://localhost:8000/api/login', data).subscribe(
-      (result: any) => {
-        localStorage.setItem('token', result.token);
-        this.router.navigate(['/secure']);
-      },
-      (error) => {
-        console.log('error');
-        console.log(error);
-      }
-    );
+    this.http
+      .post('https://frinicas-recipe-app-be.herokuapp.com/login', data)
+      .subscribe(
+        (result: any) => {
+          localStorage.setItem('token', result.token);
+          this.router.navigate(['/secure']);
+        },
+        (error) => {
+          console.log('error');
+          console.log(error);
+        }
+      );
   }
 }
