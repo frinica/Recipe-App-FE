@@ -56,6 +56,12 @@ export class ListService {
       .pipe(catchError(this.errorHandler));
   }
 
+  destroy(id: number) {
+    return this.httpClient
+      .delete<List>(this.apiURL + '/delete-list/' + id, this.httpOptions)
+      .pipe(catchError(this.errorHandler));
+  }
+
   delete(id: number) {
     return this.httpClient
       .delete<List>(this.apiURL + '/delete-recipe/' + id, this.httpOptions)

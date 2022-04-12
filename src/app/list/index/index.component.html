@@ -10,26 +10,10 @@
     <td>
       <a [routerLink]="['/lists/', list.id]">{{ list.list_name }}</a>
     </td>
-    <!-- <td>
-        <a
-          href="#"
-          [routerLink]="['/list/', list.id, 'view']"
-          class="btn btn-info"
-          >View</a
-        >
-        <a
-          href="#"
-          [routerLink]="['/list/', list.id, 'edit']"
-          class="btn btn-info"
-          >Edit</a
-        >
-        <button
-          type="button"
-          (click)="deletelist(list.id)"
-          class="btn btn-info"
-        >
-          Delete
-        </button>
-      </td> -->
+    <td>
+      <button type="button" (click)="delete(list.id)" class="btn btn-info">
+        Delete
+      </button>
+    </td>
   </tr>
 </table>
