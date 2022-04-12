@@ -50,7 +50,11 @@ export class RecipeService {
 
   getBulk(queryString: number | string): Observable<any> {
     return this.httpClient.get<any>(
-      this.apiURL + '/informationBulk?ids=' + queryString + '&' + this.apiKey
+      this.apiURL +
+        'recipes/informationBulk?ids=' +
+        queryString +
+        '&' +
+        this.apiKey
     );
   }
 

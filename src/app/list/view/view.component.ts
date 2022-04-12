@@ -1,3 +1,4 @@
+import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Recipe } from 'src/app/recipe/recipe';
@@ -14,6 +15,8 @@ export class ViewComponent implements OnInit {
   id!: number;
   lists: List[] = [];
   entries: ListEntry[] = [];
+  recipes: Recipe[] = [];
+  rID!: any;
 
   constructor(
     public listService: ListService,
@@ -32,15 +35,17 @@ export class ViewComponent implements OnInit {
       console.log(this.lists);
       console.log(this.entries);
 
-      let rID = this.entries.map((t) => t.recipe_id);
-      console.log(rID);
+      this.rID = this.entries.map((t) => t.recipe_id);
+      console.log(this.rID);
+
+      this.recipeService.getBulk(this.rID).subscribe(
+        (data: any) => {
+          this.recipes = data;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
     });
-
-    //Hur data ska skickas som queryString
-
-    /* let params = new HttpParams();
-    const actors = ['Elvis', 'Jane', 'Frances'];
-    params.append('actors', JSON.stringify(actors);
-    this.http.get(url, { params }); */
   }
 }

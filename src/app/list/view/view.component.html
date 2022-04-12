@@ -9,8 +9,15 @@
       <th></th>
     </tr>
 
-    <tr>
-      <td *ngFor="let entry of entries">{{ entry.recipe_id }}</td>
+    <tr *ngFor="let recipe of recipes">
+      <td>
+        <a [routerLink]="['/recipe-details', recipe.id]"
+          ><img class="img-thumbnail" [src]="recipe.image" alt=""
+        /></a>
+      </td>
+      <td>
+        <a [routerLink]="['/recipe-details', recipe.id]">{{ recipe.title }}</a>
+      </td>
       <!--       <td>
         <a
           href="#"
