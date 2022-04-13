@@ -7,14 +7,12 @@
         class="card bg-dark text-white shadow-sm mb-3 rounded"
         style="max-width: 540px"
       >
-        <div class="row g-0">
-          <a [routerLink]="['/recipe-details', recipe.id]">
-            <img [src]="recipe.image" class="card-img" alt="recipe image"
-          /></a>
+        <a class="link-light" [routerLink]="['/recipe-details', recipe.id]">
+          <img [src]="recipe.image" class="card-img" alt="recipe image" />
           <div class="card-img-overlay">
             <h2 class="card-title">{{ recipe.title }}</h2>
-          </div>
-        </div>
+          </div></a
+        >
       </div>
     </div>
   </section>
