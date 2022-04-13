@@ -1,27 +1,95 @@
-# RecipeApp
+# Recipe App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.6.
+In this app you can get cooking inspiration by browsing ranom recipes, search for recipes you want to cook and save recipes to custom lists on your own profile for easy access in the future. The goal of this project to allow a user to find and save recipes and if the user is registered they should also be able to save their chosen recipes.
 
-## Development server
+The application is developed in VS Code using Angular and styled with Bootstrap.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Features
 
-## Code scaffolding
+- Get random recipe suggestions.
+  On the homepage 6 random recipes will be generated everytime the page is refreshed.
+- Search recipes.
+  Search functionallity with options to filter the search.
+- Registered user.
+  Users can register on the site to gain access to create their own lists and save their chosen recipes.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## API Reference
 
-## Build
+The recipes are fetched from spoonaculars API. I am using the free version which limits the amount of times API calls can be made. If there are no recipies shown in the application chances are that the daily quota of API calls have already been reached. If this happens you can easily sign up to spoonaculars website to generate a new API Key and change it in the code of the project to your own key.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+https://spoonacular.com/food-api
 
-## Running unit tests
+The users and lists are called and handled by my own API, see related projects section.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Usage
 
-## Running end-to-end tests
+### App component
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Here you find the navbar and logic to remove token if a user logs out.
 
-## Further help
+### Public component
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Acts as the homepage where random recipies are displayed by calling the API with the getRandom() method.
+Routing for /home, /login and /register.
+
+#### Login component
+
+Login form that sends a request to my backend API to login the user.
+
+#### Register component
+
+Form to register a user in the application. Sends the request to my backend API.
+
+### Secure component
+
+Sends request to my backend API to get information about the logged in user.
+
+### Recipe component
+
+Handles all services towards spoonaculars API.
+
+- getAll() Fetches recipes when the search feature is used.
+- getByID() Fetches one single recipe.
+- getBulk() Fetches the recipes that are saved in a custom list.
+- getRandom() Fetches 6 random recipes that are displayed on the homepage.
+
+Routing for /search and /recipe-details/:id
+
+#### Search component
+
+Search form to search for recipes and displays the results.
+
+#### Single-page
+
+Displays one single recipe.
+
+### List component
+
+Handle all list-related services towards the backend API.
+
+- viewAll() Fetches all of the users lists.
+- store() Creates a new list.
+- getByID() Fetches the contents of one list.
+- update() Saves new recipes to a list.
+- destroy() Deletes a list and it's content.
+- delete() Removes a recipe from a list.
+
+Routing for /lists/create, /lists, /lists/:id
+
+#### Create component
+
+Form to create a new list.
+
+#### Index component
+
+Displays all of one users lists.
+
+#### View component
+
+Displays one list and it's content.
+
+## Related
+
+My Backend project for this app
+
+https://github.com/frinica/Recipe-App-BE
