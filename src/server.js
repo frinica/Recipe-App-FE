@@ -10,7 +10,7 @@ app.use((req, res, next) => {
 
 app.get("/*", (req, res) => {
   request(
-    { url: "https://frinicas-recipe-app-fe.herokuapp.com" },
+    { url: "https://frinicas-recipe-app-be.herokuapp.com" },
     (error, response, body) => {
       if (error || response.statusCode !== 200) {
         return res.status(500).json({ type: "error", message: err.message });
