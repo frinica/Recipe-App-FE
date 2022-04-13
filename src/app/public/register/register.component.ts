@@ -29,6 +29,7 @@ export class RegisterComponent implements OnInit {
   submit() {
     const httpOptions = {
       headers: new HttpHeaders({
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       }),
     };
@@ -36,7 +37,7 @@ export class RegisterComponent implements OnInit {
 
     this.http
       .post(
-        'https://frinicas-recipe-app-be.herokuapp.com/register',
+        'https://frinicas-recipe-app-be.herokuapp.com/api/register',
         formData,
         httpOptions
       )

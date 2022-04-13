@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     };
 
     this.http
-      .post('https://frinicas-recipe-app-be.herokuapp.com/login', data)
+      .post('https://frinicas-recipe-app-be.herokuapp.com/api/login', data)
       .subscribe(
         (result: any) => {
           localStorage.setItem('token', result.token);
