@@ -1,22 +1,30 @@
-function requireHTTPS(req, res, next) {
-  // The 'x-forwarded-proto' check is for Heroku
-  if (!req.secure && req.get("x-forwarded-proto") !== "https") {
-    return res.redirect("https://" + req.get("host") + req.url);
-  }
-  next();
-}
 const express = require("express");
+const request = require("request");
+
 const app = express();
-app.use(requireHTTPS);
 
-app.use(express.static("./dist/recipe-app"));
-
-app.get("/*", function (req, res) {
-  res.sendFile("index.html", { root: "dist/recipe-app/" });
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  next();
 });
 
-app.route("/*", function (req, res) {
-  res.redirect(__dirname + "/dist/index.html");
+app.get("/*", (req, res) => {
+  request(
+    { url: "https://frinicas-recipe-app-be.herokuapp.com" },
+    (error, response, body) => {
+      if (error || response.statusCode !== 200) {
+        return res.status(500).json({ type: "error", message: err.message });
+      }
+
+      res.json(JSON.parse(body));
+    }
+  );
 });
 
-app.listen(process.env.PORT || 8080);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`listening on ${PORT}`));
