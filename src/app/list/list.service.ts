@@ -9,7 +9,7 @@ import { List, ListEntry } from './list';
   providedIn: 'root',
 })
 export class ListService {
-  private apiURL = 'https://frinicas-recipe-app-be.herokuapp.com/api';
+  private apiURL = 'https://frinicas-recipe-app-be.herokuapp.com/api/';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -22,7 +22,7 @@ export class ListService {
 
   viewAll(): Observable<List[]> {
     return this.httpClient
-      .get<List[]>(this.apiURL + '/lists-view', this.httpOptions)
+      .get<List[]>(this.apiURL + 'lists-view', this.httpOptions)
       .pipe(catchError(this.errorHandler));
   }
 
@@ -31,7 +31,7 @@ export class ListService {
     let user_id = userid;
     return this.httpClient
       .post<List>(
-        this.apiURL + '/store-list',
+        this.apiURL + 'store-list',
         JSON.stringify({ list_name, user_id }),
         this.httpOptions
       )
@@ -40,7 +40,7 @@ export class ListService {
 
   getByID(id: number | string): Observable<any> {
     return this.httpClient
-      .get<any>(this.apiURL + '/list-view/' + id, this.httpOptions)
+      .get<any>(this.apiURL + 'list-view/' + id, this.httpOptions)
       .pipe(catchError(this.errorHandler));
   }
 
@@ -49,7 +49,7 @@ export class ListService {
     let recipe_id = recipeid;
     return this.httpClient
       .put<List>(
-        this.apiURL + '/update-list/' + customlist_id,
+        this.apiURL + 'update-list/' + customlist_id,
         JSON.stringify({ customlist_id, recipe_id }),
         this.httpOptions
       )
@@ -58,13 +58,13 @@ export class ListService {
 
   destroy(id: number) {
     return this.httpClient
-      .delete<List>(this.apiURL + '/delete-list/' + id, this.httpOptions)
+      .delete<List>(this.apiURL + 'delete-list/' + id, this.httpOptions)
       .pipe(catchError(this.errorHandler));
   }
 
   delete(id: number) {
     return this.httpClient
-      .delete<List>(this.apiURL + '/delete-recipe/' + id, this.httpOptions)
+      .delete<List>(this.apiURL + 'delete-recipe/' + id, this.httpOptions)
       .pipe(catchError(this.errorHandler));
   }
 

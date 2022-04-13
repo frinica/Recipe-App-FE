@@ -12,7 +12,7 @@ import { Recipe } from './recipe';
 })
 export class RecipeService {
   private apiURL = 'https://api.spoonacular.com/';
-  private apiKey = 'apiKey=be7d5d9944af4f6588820dc98572a1da';
+  private apiKey = 'apiKey=8655ce2ce8ec4641b9f2bae582c91197';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -21,14 +21,18 @@ export class RecipeService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getAll(queryString: string): Observable<any> {
+  getAll(query: any): Observable<any> {
     return this.httpClient
       .get<any>(
         this.apiURL +
           'recipes/complexSearch?query= ' +
-          queryString +
-          //'&cuisine=' +
-          //this.cuisine +
+          query.search +
+          '&type=' +
+          query.type +
+          '&cuisine=' +
+          query.cuisine +
+          '&diet=' +
+          query.diet +
           '&number=20&' +
           this.apiKey
       )

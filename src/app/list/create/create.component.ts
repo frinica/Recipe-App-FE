@@ -49,7 +49,7 @@ export class CreateComponent implements OnInit {
       .store(this.form.value, this.user.id)
       .subscribe((res: any) => {
         console.log('List created successfully!');
-        this.router.navigateByUrl('lists/create');
+        this.router.navigateByUrl('lists');
       });
   }
 }

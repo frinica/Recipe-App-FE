@@ -1,41 +1,40 @@
-<div class="container">
-  <a routerLink="/lists" class="btn btn-primary">Back</a>
+<div class="d-flex justify-content-around mt-3 mb-5">
   <h1 *ngFor="let list of lists">{{ list.list_name }}</h1>
+  <button class="btn btn-dark" routerLink="/lists">Back</button>
+</div>
 
-  <table class="table">
-    <tr>
-      <th>Recipe</th>
-      <th></th>
-      <th width="220px">Action</th>
-    </tr>
-
-    <tbody *ngIf="recipes.length">
-      <ng-container *ngFor="let recipe of recipes; let i = index">
-        <tr>
-          <td>
-            <a [routerLink]="['/recipe-details', recipe.id]"
-              ><img class="img-thumbnail" [src]="recipe.image" alt=""
+<section>
+  <div *ngIf="recipes.length">
+    <ng-container *ngFor="let recipe of recipes; let i = index">
+      <div class="card mb-3" style="max-width: 540px">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <a [routerLink]="['/recipe-details', recipe.id]">
+              <img
+                [src]="recipe.image"
+                class="img-fluid rounded-start"
+                alt="recipe image"
             /></a>
-          </td>
+          </div>
 
-          <td>
-            <a [routerLink]="['/recipe-details', recipe.id]">{{
-              recipe.title
-            }}</a>
-          </td>
-          <div *ngIf="entry">
-            <td>
+          <div class="col-md-8">
+            <div class="card-body">
+              <a
+                class="link-dark text-decoration-none"
+                [routerLink]="['/recipe-details', recipe.id]"
+              >
+                <h2 class="card-title h3">{{ recipe.title }}</h2>
+              </a>
               <button
-                type="button"
+                class="btn btn-sm btn-danger"
                 (click)="deleteRecipe(entry[i])"
-                class="btn btn-danger"
               >
                 Delete
               </button>
-            </td>
+            </div>
           </div>
-        </tr>
-      </ng-container>
-    </tbody>
-  </table>
-</div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</section>

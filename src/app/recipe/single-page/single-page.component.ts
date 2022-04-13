@@ -22,6 +22,7 @@ export class SinglePageComponent implements OnInit {
   recipe!: Recipe;
   form!: FormGroup;
   lists: List[] = [];
+  loggedIn = false;
 
   constructor(
     public recipeService: RecipeService,
@@ -31,6 +32,8 @@ export class SinglePageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.loggedIn = localStorage.getItem('token') !== null;
+
     this.id = this.actRoute.snapshot.params['id'];
 
     this.recipeService.getByID(this.id).subscribe(

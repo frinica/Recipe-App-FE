@@ -1,19 +1,33 @@
-<h1>My lists</h1>
+<div class="d-flex flex-column align-items-center">
+  <h1 class="mt-5 mb-5">My lists</h1>
 
-<a routerLink="/lists/create/" class="btn btn-success">Create New List</a>
-<table class="table table-bordered">
-  <tr>
-    <th>Name</th>
-    <th width="220px">Action</th>
-  </tr>
-  <tr *ngFor="let list of lists">
-    <td>
-      <a [routerLink]="['/lists/', list.id]">{{ list.list_name }}</a>
-    </td>
-    <td>
-      <button type="button" (click)="delete(list.id)" class="btn btn-info">
-        Delete
-      </button>
-    </td>
-  </tr>
-</table>
+  <a routerLink="/lists/create/" class="btn btn-dark">Create New List</a>
+  <table class="table-hover table-borderless mt-4">
+    <thead>
+      <tr>
+        <th>List</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let list of lists">
+        <td style="padding-right: 8rem">
+          <a
+            class="text-decoration-none link-dark"
+            [routerLink]="['/lists/', list.id]"
+            >{{ list.list_name }}</a
+          >
+        </td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="delete(list.id)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

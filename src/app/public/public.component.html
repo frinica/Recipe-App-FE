@@ -1,18 +1,21 @@
-<div class="container">
-  <table class="table table-bordered">
-    <tr>
-      <th>Image</th>
-      <th>Title</th>
-    </tr>
-    <tr *ngFor="let recipe of recipes">
-      <td>
-        <a [routerLink]="['/recipe-details', recipe.id]"
-          ><img [src]="recipe.image" alt=""
-        /></a>
-      </td>
-      <td>
-        <a [routerLink]="['/recipe-details', recipe.id]">{{ recipe.title }}</a>
-      </td>
-    </tr>
-  </table>
+<div class="text-center">
+  <h1 class="display-3 mb-5">Recipe App</h1>
+
+  <section class="d-flex flex-column align-items-center">
+    <div *ngFor="let recipe of recipes">
+      <div
+        class="card bg-dark text-white shadow-sm mb-3 rounded"
+        style="max-width: 540px"
+      >
+        <div class="row g-0">
+          <a [routerLink]="['/recipe-details', recipe.id]">
+            <img [src]="recipe.image" class="card-img" alt="recipe image"
+          /></a>
+          <div class="card-img-overlay">
+            <h2 class="card-title">{{ recipe.title }}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
