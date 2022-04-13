@@ -9,16 +9,11 @@ export class AppComponent {
   loggedIn = false;
 
   ngOnInit() {
-    if (isDevMode()) {
-      console.log('Development!');
-    } else {
-      console.log('Production!');
-    }
-
     this.loggedIn = localStorage.getItem('token') !== null;
   }
 
   logout() {
     localStorage.removeItem('token');
+    window.location.reload();
   }
 }

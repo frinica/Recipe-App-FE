@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
         (result: any) => {
           localStorage.setItem('token', result.token);
           this.router.navigate(['/secure']);
+          window.location.reload();
         },
         (error) => {
           console.log('error');

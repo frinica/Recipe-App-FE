@@ -42,7 +42,7 @@ export class RegisterComponent implements OnInit {
         httpOptions
       )
       .subscribe(
-        (result: any) => this.router.navigate(['/home']),
+        (result: any) => this.router.navigate(['/login']),
         (err) => console.log(err)
       );
   }
