@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -27,10 +27,20 @@ export class RegisterComponent implements OnInit {
   }
 
   submit() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      }),
+    };
     const formData = this.form.getRawValue();
 
     this.http
-      .post('https://frinicas-recipe-app-be.herokuapp.com/register', formData)
+      .post(
+        'https://frinicas-recipe-app-be.herokuapp.com/register',
+        formData,
+        httpOptions
+      )
       .subscribe(
         (result: any) => this.router.navigate(['/home']),
         (err) => console.log(err)
