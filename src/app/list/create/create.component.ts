@@ -25,7 +25,9 @@ export class CreateComponent implements OnInit {
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     });
     this.http
-      .get('http://localhost:8000/api/user', { headers: headers })
+      .get('https://frinicas-recipe-app-be.herokuapp.com/api/user', {
+        headers: headers,
+      })
       .subscribe((result: any) => (this.user = result));
     (err: any) => {
       localStorage.removeItem('token');

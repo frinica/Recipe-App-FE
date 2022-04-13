@@ -9,7 +9,7 @@ import { List, ListEntry } from './list';
   providedIn: 'root',
 })
 export class ListService {
-  private apiURL = 'https://frinicas-recipe-app-be.herokuapp.com';
+  private apiURL = 'https://frinicas-recipe-app-be.herokuapp.com/api';
 
   httpOptions = {
     headers: new HttpHeaders({
